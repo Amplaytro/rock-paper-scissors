@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rock Paper Scissors - Play against the computer in this classic game!">
+  <title>Rock Paper Scissors Game</title>
+  <link rel="stylesheet" href="./styles/index.css?v=30">
+</head>
+
+<body>
+  <div class="game-container">
+    <!-- Header with Title and Scores -->
+    <header class="header">
+      <div class="game-title">
+        <span class="game-title__word">Rock</span>
+        <span class="game-title__word">Paper</span>
+        <span class="game-title__word">Scissors</span>
+      </div>
+      <div class="scores">
+        <div class="score-box" id="computer-score-box">
+          <span class="score-box__label">Computer Score</span>
+          <span class="score-box__value" id="computer-score">0</span>
+        </div>
+        <div class="score-box" id="player-score-box">
+          <span class="score-box__label">Your Score</span>
+          <span class="score-box__value" id="player-score">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Game Screen - Selection Area -->
+    <main class="screen active" id="game-screen">
+      <div class="game-area">
+        <div class="options-container">
+          <!-- Triangle connecting lines -->
+          <svg class="triangle-lines" viewBox="0 0 320 300" preserveAspectRatio="none">
+            <!-- Top line: Rock to Scissors -->
+            <line x1="55" y1="55" x2="265" y2="55" stroke="rgba(70, 90, 70, 0.85)" stroke-width="10"
+              stroke-linecap="round" />
+            <!-- Left line: Rock to Paper -->
+            <line x1="55" y1="55" x2="160" y2="245" stroke="rgba(70, 90, 70, 0.85)" stroke-width="10"
+              stroke-linecap="round" />
+            <!-- Right line: Scissors to Paper -->
+            <line x1="265" y1="55" x2="160" y2="245" stroke="rgba(70, 90, 70, 0.85)" stroke-width="10"
+              stroke-linecap="round" />
+          </svg>
+          <button class="option option--rock" id="rock-btn" data-choice="rock" aria-label="Choose Rock">
+            <div class="option__inner">
+              <span class="option__icon icon-rock"></span>
+            </div>
+          </button>
+          <button class="option option--paper" id="paper-btn" data-choice="paper" aria-label="Choose Paper">
+            <div class="option__inner">
+              <span class="option__icon icon-paper"></span>
+            </div>
+          </button>
+          <button class="option option--scissors" id="scissors-btn" data-choice="scissors" aria-label="Choose Scissors">
+            <div class="option__inner">
+              <span class="option__icon icon-scissors"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Result Screen -->
+    <section class="screen" id="result-screen">
+      <div class="result-area">
+        <div class="picks-container">
+          <!-- Player Pick -->
+          <div class="pick" id="player-pick">
+            <span class="pick__label">You Picked</span>
+            <div class="pick__circle" id="player-pick-circle">
+              <div class="pick__inner">
+                <span class="pick__icon" id="player-pick-icon"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Message -->
+          <div class="result-message" id="result-message">
+            <h2 class="result-message__title" id="result-title">YOU WIN</h2>
+            <p class="result-message__subtitle" id="result-subtitle">AGAINST PC</p>
+            <div class="result-actions">
+              <button class="btn btn--primary" id="play-again-btn">Play Again</button>
+            </div>
+          </div>
+
+          <!-- Computer Pick -->
+          <div class="pick" id="computer-pick">
+            <span class="pick__label">PC Picked</span>
+            <div class="pick__circle" id="computer-pick-circle">
+              <div class="pick__inner">
+                <span class="pick__icon" id="computer-pick-icon"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Celebration Overlay -->
+  <div class="celebration-overlay" id="celebration-overlay">
+    <div class="confetti-container" id="confetti-container"></div>
+    <div class="trophy-container">
+      <div class="stars">
+        <span class="star">⭐</span>
+        <span class="star">⭐</span>
+        <span class="star">⭐</span>
+        <span class="star">⭐</span>
+        <span class="star">⭐</span>
+        <span class="star">⭐</span>
+      </div>
+      <span class="trophy">🏆</span>
+    </div>
+    <div class="celebration-text">
+      <h1 class="celebration-text__title">HURRAY!!</h1>
+      <p class="celebration-text__subtitle">You Won The Game</p>
+    </div>
+    <div class="celebration-actions">
+      <button class="btn btn--primary" id="celebration-play-again-btn">Play Again</button>
+    </div>
+    <button class="rules-btn" id="celebration-rules-btn">Rules</button>
+  </div>
+
+  <!-- Rules Modal -->
+  <div class="modal-overlay" id="rules-modal">
+    <div class="modal">
+      <button class="modal__close" id="modal-close-btn" aria-label="Close Rules">✕</button>
+      <h2 class="modal__title">Game Rules</h2>
+      <ul class="rules-list">
+        <li class="rule-item">
+          <span class="rule-item__bullet"></span>
+          <span class="rule-item__text">
+            Rock beats scissors, scissors beat paper, and paper beats rock.
+          </span>
+        </li>
+        <li class="rule-item">
+          <span class="rule-item__bullet"></span>
+          <span class="rule-item__text">
+            Agree ahead of time whether you'll count off "rock, paper, scissors, shoot" or just "rock, paper, scissors."
+          </span>
+        </li>
+        <li class="rule-item">
+          <span class="rule-item__bullet"></span>
+          <span class="rule-item__text">
+            Use rock, paper, scissors to settle minor decisions or simply play to pass the time.
+          </span>
+        </li>
+        <li class="rule-item">
+          <span class="rule-item__bullet"></span>
+          <span class="rule-item__text">
+            If both players lay down the same hand, each player lays down another hand.
+          </span>
+        </li>
+      </ul>
+      <div class="modal__footer">
+        <button class="btn btn--rules" id="modal-rules-btn">RULES</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed Bottom Buttons -->
+  <div class="fixed-bottom-buttons">
+    <button class="next-btn" id="next-btn">Next</button>
+    <button class="rules-btn" id="rules-btn">Rules</button>
+  </div>
+
+  <script src="./js/app.js?v=2"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+/* ===================================
+   CSS Variables - Design Tokens
+   =================================== */
+
+:root {
+  /* Colors - Primary */
+  --color-primary: #6BBF59;
+  --color-primary-light: #8BC34A;
+  --color-primary-dark: #4CAF50;
+  --color-bg-gradient: linear-gradient(135deg, #6BBF59 0%, #5DAE4E 100%);
+
+  /* Colors - Game Options */
+  --color-rock: #3B82F6;
+  --color-rock-ring: #2563EB;
+  --color-paper: #F97316;
+  --color-paper-ring: #EA580C;
+  --color-scissors: #A855F7;
+  --color-scissors-ring: #9333EA;
+
+  /* Colors - UI */
+  --color-white: #FFFFFF;
+  --color-black: #1A1A1A;
+  --color-text-dark: #333333;
+  --color-text-light: #FFFFFF;
+  --color-score-bg: #FFFFFF;
+  --color-overlay: rgba(0, 0, 0, 0.5);
+
+  /* Colors - Results */
+  --color-win: #FFD700;
+  --color-lose: #FF4444;
+  --color-tie: #FFFFFF;
+
+  /* Typography */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-xs: 0.625rem;
+  --font-size-sm: 0.75rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-Index */
+  --z-base: 1;
+  --z-overlay: 100;
+  --z-modal: 400;
+  --z-celebration: 300;
+}

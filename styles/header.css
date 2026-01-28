@@ -1,0 +1,80 @@
+/* ===================================
+   Header Styles - Title & Scores
+   =================================== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    background: transparent;
+    border: 3px solid var(--color-white);
+    border-radius: var(--radius-lg);
+}
+
+/* Game Title */
+.game-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.game-title__word {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Score Container */
+.scores {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.score-box {
+    background: var(--color-score-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    min-width: 60px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.score-box__label {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    display: block;
+}
+
+.score-box__value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-text-dark);
+    line-height: 1;
+}
+
+/* Score highlight animation */
+.score-box--highlight {
+    animation: scorePopUp 0.4s ease;
+}
+
+@keyframes scorePopUp {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
