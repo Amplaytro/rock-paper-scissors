@@ -3,11 +3,11 @@
    Imports all modular stylesheets
    =================================== */
 
-@import './variables.css?v=2';
-@import './base.css?v=2';
-@import './header.css?v=4';
-@import './game.css?v=5';
-@import './result.css?v=22';
-@import './celebration.css?v=2';
-@import './modal.css?v=3';
+@import './variables.css?v=3';
+@import './base.css?v=3';
+@import './header.css?v=5';
+@import './game.css?v=6';
+@import './result.css?v=23';
+@import './celebration.css?v=3';
+@import './modal.css?v=4';
 @import './animations.css?v=2';

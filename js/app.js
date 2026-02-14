@@ -209,15 +209,18 @@ function showScreen(screenId) {
       elements.gameScreen.classList.add('active');
       elements.rulesBtn.style.display = 'block';
       elements.nextBtn.classList.remove('visible'); // Hide Next button on game screen
+      document.body.style.background = '#8CC461'; // Figma game screen bg
       break;
     case 'result':
       elements.resultScreen.classList.add('active');
       elements.rulesBtn.style.display = 'block';
+      document.body.style.background = '#89C15E'; // Figma result screen bg
       break;
     case 'celebration':
       elements.celebrationOverlay.classList.add('active');
       elements.rulesBtn.style.display = 'none';
       elements.nextBtn.classList.remove('visible'); // Hide Next button on celebration
+      document.body.style.background = '#8CC461'; // Figma game screen bg
       createConfetti();
       break;
   }

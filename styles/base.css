@@ -24,7 +24,7 @@ body {
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
     color: var(--color-text-light);
-    background: var(--color-bg-gradient);
+    background: var(--color-bg-game);
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -94,7 +94,7 @@ ol {
 /* Main Container */
 .game-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 802px;
     min-height: 100vh;
     margin: 0 auto;
     padding: var(--spacing-lg);

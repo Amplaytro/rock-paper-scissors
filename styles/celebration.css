@@ -5,7 +5,7 @@
 .celebration-overlay {
     position: fixed;
     inset: 0;
-    background: var(--color-bg-gradient);
+    background: var(--color-bg-game);
     display: none;
     flex-direction: column;
     justify-content: center;
