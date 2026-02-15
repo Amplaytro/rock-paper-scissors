@@ -66,16 +66,37 @@ const elements = {
 // Icon Mappings
 // ===================================
 
-const ICONS = {
-  rock: '✊',
-  paper: '✋',
-  scissors: '✌️'
-};
-
 const CHOICE_CLASSES = {
   rock: 'pick__circle--rock',
   paper: 'pick__circle--paper',
   scissors: 'pick__circle--scissors'
+};
+
+const PICK_ICON_CLASSES = {
+  rock: 'pick__icon--rock',
+  paper: 'pick__icon--paper',
+  scissors: 'pick__icon--scissors'
+};
+
+const RESULT_CONTENT = {
+  win: {
+    title: 'YOU WIN',
+    subtitle: 'AGAINST PC',
+    screenClass: 'result-screen--win',
+    winnerPick: 'player'
+  },
+  lose: {
+    title: 'YOU LOST',
+    subtitle: 'AGAINST PC',
+    screenClass: 'result-screen--lose',
+    winnerPick: 'computer'
+  },
+  tie: {
+    title: 'TIE UP',
+    subtitle: '',
+    screenClass: 'result-screen--tie',
+    winnerPick: null
+  }
 };
 
 // ===================================
@@ -220,7 +241,7 @@ function showScreen(screenId) {
       elements.celebrationOverlay.classList.add('active');
       elements.rulesBtn.style.display = 'none';
       elements.nextBtn.classList.remove('visible'); // Hide Next button on celebration
-      document.body.style.background = '#8CC461'; // Figma game screen bg
+      document.body.style.background = '#89C15E'; // Figma celebration screen bg
       createConfetti();
       break;
   }
@@ -237,10 +258,13 @@ function updatePickDisplay(circleEl, iconEl, choice) {
   Object.values(CHOICE_CLASSES).forEach(cls => {
     circleEl.classList.remove(cls);
   });
+  Object.values(PICK_ICON_CLASSES).forEach(cls => {
+    iconEl.classList.remove(cls);
+  });
 
   // Add appropriate class and icon
   circleEl.classList.add(CHOICE_CLASSES[choice]);
-  iconEl.textContent = ICONS[choice];
+  iconEl.classList.add(PICK_ICON_CLASSES[choice]);
 }
 
 /**
@@ -253,38 +277,28 @@ function showResultScreen(result, playerChoice, computerChoice) {
   // Update picks display
   updatePickDisplay(elements.playerPickCircle, elements.playerPickIcon, playerChoice);
   updatePickDisplay(elements.computerPickCircle, elements.computerPickIcon, computerChoice);
+  elements.resultScreen.classList.remove('result-screen--win', 'result-screen--lose', 'result-screen--tie');
 
   // Remove previous winner indicators
   elements.playerPick.classList.remove('pick--winner');
   elements.computerPick.classList.remove('pick--winner');
 
   // Update result message and winner indicators
-  // Show Next button (at bottom beside Rules) only on win
-  if (result === 'win') {
-    elements.nextBtn.classList.add('visible');
-    elements.playAgainBtn.textContent = 'Play Again';
-  } else {
-    elements.nextBtn.classList.remove('visible');
-    // Show "Replay" for ties, "Play Again" for losses
-    elements.playAgainBtn.textContent = result === 'tie' ? 'Replay' : 'Play Again';
+  const content = RESULT_CONTENT[result] || RESULT_CONTENT.tie;
+  elements.resultTitle.textContent = content.title;
+  elements.resultSubtitle.textContent = content.subtitle;
+  elements.resultScreen.classList.add(content.screenClass);
+
+  if (content.winnerPick === 'player') {
+    elements.playerPick.classList.add('pick--winner');
+  } else if (content.winnerPick === 'computer') {
+    elements.computerPick.classList.add('pick--winner');
   }
 
-  switch (result) {
-    case 'win':
-      elements.resultTitle.textContent = 'YOU WIN';
-      elements.resultSubtitle.textContent = 'AGAINST PC';
-      elements.playerPick.classList.add('pick--winner');
-      break;
-    case 'lose':
-      elements.resultTitle.textContent = 'YOU LOST';
-      elements.resultSubtitle.textContent = 'AGAINST PC';
-      elements.computerPick.classList.add('pick--winner');
-      break;
-    case 'tie':
-      elements.resultTitle.textContent = 'TIE UP';
-      elements.resultSubtitle.textContent = '';
-      break;
-  }
+  // Show Next button only on win
+  elements.nextBtn.classList.toggle('visible', result === 'win');
+  // Show "Replay" for ties, "Play Again" for wins/losses
+  elements.playAgainBtn.textContent = result === 'tie' ? 'Replay' : 'Play Again';
 
   // Add reveal animations
   elements.playerPick.classList.add('pick--reveal');

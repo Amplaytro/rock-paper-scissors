@@ -3,159 +3,111 @@
    =================================== */
 
 .celebration-overlay {
+    --scale: min(calc(100vw / 1280px), calc(100vh / 738px));
+    --offset-x: calc((100vw - (1280px * var(--scale))) / 2);
     position: fixed;
     inset: 0;
-    background: var(--color-bg-game);
+    background: var(--color-bg-result);
     display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     z-index: var(--z-celebration);
-    padding: var(--spacing-xl);
+    overflow: hidden;
 }
 
 .celebration-overlay.active {
-    display: flex;
+    display: block;
 }
 
 /* Trophy Container */
 .trophy-container {
-    position: relative;
-    margin-bottom: var(--spacing-xl);
-    animation: trophyBounce 1s ease infinite;
-}
-
-@keyframes trophyBounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
+    position: absolute;
+    left: calc(var(--offset-x) + (388px * var(--scale)));
+    top: calc(86px * var(--scale));
+    width: calc(504px * var(--scale));
+    height: calc(304px * var(--scale));
 }
 
 .trophy {
-    font-size: 100px;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    width: calc(201px * var(--scale));
+    height: calc(201px * var(--scale));
+    position: absolute;
+    left: calc(169px * var(--scale));
+    top: calc(103px * var(--scale));
+    z-index: 2;
 }
 
 /* Stars Decoration */
 .stars {
     position: absolute;
-    width: 200px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: calc(504px * var(--scale));
+    height: calc(297px * var(--scale));
+    top: 0;
+    left: 0;
     pointer-events: none;
-}
-
-.star {
-    position: absolute;
-    font-size: 24px;
-    animation: starTwinkle 1.5s ease-in-out infinite;
-}
-
-.star:nth-child(1) {
-    top: -20px;
-    left: 20px;
-    animation-delay: 0s;
-}
-
-.star:nth-child(2) {
-    top: -10px;
-    right: 10px;
-    animation-delay: 0.3s;
-}
-
-.star:nth-child(3) {
-    top: 30px;
-    left: -10px;
-    animation-delay: 0.6s;
-}
-
-.star:nth-child(4) {
-    top: 20px;
-    right: -20px;
-    animation-delay: 0.9s;
-}
-
-.star:nth-child(5) {
-    bottom: 40px;
-    left: 30px;
-    animation-delay: 0.2s;
-}
-
-.star:nth-child(6) {
-    bottom: 30px;
-    right: 40px;
-    animation-delay: 0.5s;
-}
-
-@keyframes starTwinkle {
-
-    0%,
-    100% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
+    z-index: 1;
 }
 
 /* Celebration Text */
 .celebration-text {
+    position: absolute;
+    left: calc(var(--offset-x) + (443px * var(--scale)));
+    top: calc(443px * var(--scale));
+    width: calc(454px * var(--scale));
     text-align: center;
-    margin-bottom: var(--spacing-2xl);
 }
 
 .celebration-text__title {
-    font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-black);
-    color: var(--color-win);
+    font-size: calc(91px * var(--scale));
+    font-weight: 600;
+    color: var(--color-white);
     text-transform: uppercase;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-    margin-bottom: var(--spacing-sm);
-    animation: titlePulse 0.8s ease-in-out infinite alternate;
-}
-
-@keyframes titlePulse {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1.05);
-    }
+    letter-spacing: calc(9.1px * var(--scale));
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .celebration-text__subtitle {
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
+    margin-top: calc(35px * var(--scale));
+    font-size: calc(41px * var(--scale));
+    font-weight: 600;
     color: var(--color-white);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: calc(4.1px * var(--scale));
+    line-height: 1;
+    white-space: nowrap;
 }
 
 /* Celebration Actions */
 .celebration-actions {
-    display: flex;
-    gap: var(--spacing-lg);
+    position: absolute;
+    left: calc(var(--offset-x) + (581px * var(--scale)));
+    top: calc(639px * var(--scale));
+    width: calc(174px * var(--scale));
+    height: calc(44px * var(--scale));
+}
+
+.celebration-actions .btn--primary {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 100%;
+    font-size: calc(15px * var(--scale));
+    font-weight: 600;
+    letter-spacing: calc(1.5px * var(--scale));
+    line-height: 1;
 }
 
 /* Confetti Container */
 .confetti-container {
-    position: fixed;
+    display: none;
+    position: absolute;
     inset: 0;
     pointer-events: none;
-    overflow: hidden;
-    z-index: calc(var(--z-celebration) - 1);
+    z-index: 0;
+}
+
+.celebration-overlay.active .confetti-container {
+    display: block;
 }
 
 .confetti {
@@ -181,6 +133,14 @@
 /* Celebration Rules Button */
 .celebration-overlay .rules-btn {
     position: absolute;
-    bottom: var(--spacing-lg);
-    right: var(--spacing-lg);
+    left: calc(var(--offset-x) + (1136px * var(--scale)));
+    top: calc(675px * var(--scale));
+    width: calc(119px * var(--scale));
+    height: calc(40px * var(--scale));
+    min-width: calc(119px * var(--scale));
+    min-height: calc(40px * var(--scale));
+    padding: 0;
+    font-size: calc(21px * var(--scale));
+    font-weight: 600;
+    letter-spacing: calc(2.1px * var(--scale));
 }

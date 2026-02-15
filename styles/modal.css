@@ -7,17 +7,12 @@
     inset: 0;
     background: transparent;
     display: none;
-    justify-content: flex-end;
-    align-items: flex-end;
     z-index: var(--z-modal);
-    padding: var(--spacing-lg);
-    padding-bottom: 60px;
-    padding-right: var(--spacing-xl);
-    animation: fadeIn var(--transition-fast);
+    animation: fadeIn 0.15s ease;
 }
 
 .modal-overlay.active {
-    display: flex;
+    display: block;
 }
 
 @keyframes fadeIn {
@@ -34,14 +29,22 @@
 .modal {
     background: var(--color-modal-bg);
     border-radius: 9.5px;
-    padding: var(--spacing-lg);
-    padding-bottom: var(--spacing-3xl);
-    max-width: 280px;
-    width: 100%;
-    position: relative;
-    box-shadow: var(--shadow-xl);
-    animation: modalSlideIn var(--transition-normal);
+    padding: 26px 17.5px 24px 23.5px;
+    width: 271px;
+    min-height: 318px;
+    position: absolute;
+    right: 41px;
+    bottom: 86px;
+    animation: modalSlideIn 0.3s ease;
+}
+
+.modal::before {
+    content: '';
+    position: absolute;
+    inset: -3.5px;
     border: 7px solid var(--color-modal-border);
+    border-radius: 9.5px;
+    pointer-events: none;
 }
 
 @keyframes modalSlideIn {
@@ -59,60 +62,57 @@
 /* Modal Close Button */
 .modal__close {
     position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 28px;
-    height: 28px;
+    top: -41px;
+    right: -36px;
+    width: 55px;
+    height: 55px;
     border-radius: var(--radius-full);
-    background: #FF4444;
+    background: #FF0000;
     color: var(--color-white);
-    font-size: 14px;
-    font-weight: var(--font-weight-bold);
+    font-size: 44px;
+    font-weight: 400;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast);
     line-height: 1;
-    border: 3px solid var(--color-white);
-    box-shadow: var(--shadow-md);
+    border: 5px solid var(--color-white);
+    cursor: pointer;
+    z-index: 10;
+    font-family: 'Dangrek', var(--font-family);
 }
 
 .modal__close:hover {
-    background: #FF2222;
-    transform: scale(1.1);
+    background: #CC0000;
 }
 
 /* Modal Title */
 .modal__title {
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-black);
+    font-size: 29px;
+    font-weight: 500;
     color: var(--color-white);
     text-align: center;
-    margin-bottom: var(--spacing-md);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: var(--spacing-sm);
+    margin-bottom: 33px;
+    line-height: 1;
 }
 
 /* Rules List */
 .rules-list {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: 17px;
 }
 
 .rule-item {
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-xs) 0;
-    font-size: 11px;
+    gap: 11px;
+    padding: 0;
+    font-size: 13px;
     color: var(--color-white);
-    border-bottom: none;
 }
 
-.rule-item:last-child {
-    border-bottom: none;
-}
+
 
 /* Yellow bullets for all rules (from Figma) */
 .rule-item__bullet {
@@ -125,8 +125,9 @@
 }
 
 .rule-item__text {
-    line-height: 1.4;
+    line-height: 1.35;
     font-weight: 400;
+    max-width: 216px;
 }
 
 .rule-item__highlight {
@@ -136,55 +137,37 @@
 
 /* Modal Footer */
 .modal__footer {
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.btn--rules {
-    background: var(--color-modal-bg);
-    color: var(--color-white);
-    padding: 8px 24px;
-    border-radius: 6px;
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 12px;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-fast);
-    border: 2px solid var(--color-white);
-}
-
-.btn--rules:hover {
-    background: #003320;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    display: none;
 }
 
 /* Fixed Bottom Buttons Container */
 .fixed-bottom-buttons {
     position: fixed;
-    bottom: var(--spacing-lg);
-    right: var(--spacing-lg);
+    bottom: 24px;
+    right: 26px;
     display: flex;
-    gap: var(--spacing-sm);
+    gap: 12px;
     z-index: var(--z-overlay);
 }
 
 /* Next Button */
 .next-btn {
-    padding: var(--spacing-sm) var(--spacing-lg);
+    width: 117px;
+    height: 38px;
+    padding: 0;
     background: transparent;
     color: var(--color-white);
     border: 2px solid var(--color-white);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
+    border-radius: 9px;
+    font-size: 21px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2.1px;
+    font-family: var(--font-family);
     transition: all var(--transition-fast);
     display: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .next-btn:hover {
@@ -193,24 +176,63 @@
 }
 
 .next-btn.visible {
-    display: block;
+    display: inline-flex;
 }
 
 /* Rules Button */
 .rules-btn {
-    padding: var(--spacing-sm) var(--spacing-lg);
+    width: 117px;
+    height: 38px;
+    padding: 0;
     background: transparent;
     color: var(--color-white);
     border: 2px solid var(--color-white);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
+    border-radius: 9px;
+    font-size: 21px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2.1px;
+    font-family: var(--font-family);
     transition: all var(--transition-fast);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rules-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .fixed-bottom-buttons {
+        right: 16px;
+        bottom: 16px;
+        gap: 8px;
+    }
+
+    .rules-btn,
+    .next-btn {
+        min-width: 110px;
+        width: 110px;
+        height: 38px;
+        font-size: 19px;
+        letter-spacing: 1.5px;
+    }
+
+    .modal {
+        right: 16px;
+        bottom: 72px;
+        width: min(271px, calc(100vw - 32px));
+        min-height: 318px;
+    }
+
+    .modal__close {
+        top: -18px;
+        right: -18px;
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+        font-size: 30px;
+    }
 }

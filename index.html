@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Rock Paper Scissors - Play against the computer in this classic game!">
   <title>Rock Paper Scissors Game</title>
-  <link rel="stylesheet" href="./styles/index.css?v=31">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dangrek&family=Roboto:wght@100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles/index.css?v=61">
 </head>
 
 <body>
@@ -35,15 +39,17 @@
       <div class="game-area">
         <div class="options-container">
           <!-- Triangle connecting lines -->
-          <svg class="triangle-lines" viewBox="0 0 320 300" preserveAspectRatio="none">
+          <svg class="triangle-lines" viewBox="0 0 378 346" preserveAspectRatio="none">
             <!-- Top line: Rock to Scissors -->
-            <line x1="55" y1="55" x2="265" y2="55" stroke="rgba(70, 90, 70, 0.85)" stroke-width="10"
+            <line x1="121" y1="72.5" x2="254" y2="72.5" stroke="black" stroke-opacity="0.64" stroke-width="15"
               stroke-linecap="round" />
             <!-- Left line: Rock to Paper -->
-            <line x1="55" y1="55" x2="160" y2="245" stroke="rgba(70, 90, 70, 0.85)" stroke-width="10"
+            <line x1="92.533" y1="130.316" x2="145.533" y2="224.316" stroke="black" stroke-opacity="0.64"
+              stroke-width="15"
               stroke-linecap="round" />
             <!-- Right line: Scissors to Paper -->
-            <line x1="265" y1="55" x2="160" y2="245" stroke="rgba(70, 90, 70, 0.85)" stroke-width="10"
+            <line x1="285.451" y1="130.75" x2="231.495" y2="224.205" stroke="black" stroke-opacity="0.64"
+              stroke-width="15"
               stroke-linecap="round" />
           </svg>
           <button class="option option--rock" id="rock-btn" data-choice="rock" aria-label="Choose Rock">
@@ -106,15 +112,8 @@
   <div class="celebration-overlay" id="celebration-overlay">
     <div class="confetti-container" id="confetti-container"></div>
     <div class="trophy-container">
-      <div class="stars">
-        <span class="star">⭐</span>
-        <span class="star">⭐</span>
-        <span class="star">⭐</span>
-        <span class="star">⭐</span>
-        <span class="star">⭐</span>
-        <span class="star">⭐</span>
-      </div>
-      <span class="trophy">🏆</span>
+      <img class="stars" src="./assets/Group 5.png" alt="Stars decoration">
+      <img class="trophy" src="./assets/Vector.png" alt="Trophy">
     </div>
     <div class="celebration-text">
       <h1 class="celebration-text__title">HURRAY!!</h1>
@@ -129,7 +128,7 @@
   <!-- Rules Modal -->
   <div class="modal-overlay" id="rules-modal">
     <div class="modal">
-      <button class="modal__close" id="modal-close-btn" aria-label="Close Rules">✕</button>
+      <button class="modal__close" id="modal-close-btn" aria-label="Close Rules">X</button>
       <h2 class="modal__title">Game Rules</h2>
       <ul class="rules-list">
         <li class="rule-item">
@@ -165,11 +164,11 @@
 
   <!-- Fixed Bottom Buttons -->
   <div class="fixed-bottom-buttons">
-    <button class="next-btn" id="next-btn">Next</button>
     <button class="rules-btn" id="rules-btn">Rules</button>
+    <button class="next-btn" id="next-btn">Next</button>
   </div>
 
-  <script src="./js/app.js?v=2"></script>
+  <script src="./js/app.js?v=7"></script>
 </body>
 
 </html>

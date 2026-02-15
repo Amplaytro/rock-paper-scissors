@@ -12,12 +12,12 @@
   --color-bg-gradient: linear-gradient(135deg, #8CC461 0%, #7DB854 100%);
 
   /* Colors - Game Options (from Figma) */
-  --color-rock: #3B82F6;
-  --color-rock-ring: #2563EB;
+  --color-rock: #0074B6;
+  --color-rock-ring: #0074B6;
   --color-paper: #FFA943;
-  --color-paper-ring: #EA580C;
+  --color-paper-ring: #FFA943;
   --color-scissors: #BD00FF;
-  --color-scissors-ring: #9333EA;
+  --color-scissors-ring: #BD00FF;
 
   /* Colors - UI */
   --color-white: #FFFFFF;
@@ -45,7 +45,7 @@
   --color-winner-outer: rgba(46, 154, 37, 0.39);
 
   /* Typography */
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family: 'Roboto', sans-serif;
   --font-size-xs: 0.625rem;
   --font-size-sm: 0.75rem;
   --font-size-base: 1rem;
